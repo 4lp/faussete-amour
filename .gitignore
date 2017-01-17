@@ -1,0 +1,13 @@
+**/.git
+**/node_modules
+**/Lib
+**/Include
+**/tcl
+**/Scripts
+**/__pycache__
+**/migrations
+*.pyc
+fausseteamour/db.sqlite3
+fausseteamour/manage.py
+pip-selfcheck.json
+secrets.json
