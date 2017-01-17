@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import generic
 from rest_framework import routers
 from blogpost import views as blogpostViews
+from release import views as releaseViews
 
 router = routers.DefaultRouter()
 router.register(r'blogpost', blogpostViews.BlogpostViewSet)
+router.register(r'release', releaseViews.ReleaseViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', generic.TemplateView.as_view(template_name='main.html')),
     url(r'^', include(router.urls)),
 ]

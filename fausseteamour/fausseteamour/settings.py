@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'webpack_loader',
     'blogpost',
+    'release',
 ]
 
 MIDDLEWARE = [

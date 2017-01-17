@@ -3,7 +3,7 @@ var BundleTracker = require('webpack-bundle-tracker')
 
 var config = require('./webpack.base.config.js')
 
-config.output.path = require('path').resolve('./personal_page/static/bundles/prod/')
+config.output.path = require('path').resolve('./fausseteamour/static/bundles/prod/')
 
 config.plugins = config.plugins.concat([
   new BundleTracker({filename: './webpack-stats-prod.json'}),
@@ -12,7 +12,7 @@ config.plugins = config.plugins.concat([
   new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify('production'),
-      'BASE_API_URL': JSON.stringify('http://slaponic.us/'),
+      'BASE_API_URL': JSON.stringify('http://fausseteamour.com/'),
   }}),
 
   // keeps hashes consistent between compilations

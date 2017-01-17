@@ -11,3 +11,5 @@ fausseteamour/db.sqlite3
 fausseteamour/manage.py
 pip-selfcheck.json
 secrets.json
+webpack-stats-local.json
+webpack-stats-prod.json
