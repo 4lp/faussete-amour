@@ -34,6 +34,33 @@ const styles = {
 }
 
 class App1 extends React.Component {
+	constructor(props){
+    super(props);
+      	this.state = {
+        	page: "main",
+        	release: "main",
+      	}
+  	}
+
+  	setMain () {
+  		this.setState({ page: "main" })
+  	}
+
+  	setReleases () {
+  		this.setState({ page: "releases" })
+  	}
+
+  	setBlog () {
+  		this.setState({ page: "blog" })
+  	}
+
+  	setReleaseMain () {
+  		this.setState({ release: "main" })
+  	}
+
+  	setRelease () {
+  		this.setState({ release: "" })
+  	}
 
 	renderSoundcloud () {
 		let source = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/130545701&amp;" +
@@ -42,7 +69,7 @@ class App1 extends React.Component {
 		return (
 			<iframe 
 			width="50%" 
-			height="450" 
+			height="500" 
 			scrolling="no" 
 			frameBorder="no" 
 			src= {source}
@@ -50,10 +77,29 @@ class App1 extends React.Component {
 			)
 	}
 
-	renderBlogposts () {
+	renderBandcamp () {
+		return (
+			<iframe 
+			style={{border: "0", width: "50%", height: "500px",}} 
+			src="https://bandcamp.com/EmbeddedPlayer/album=497716961/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" 
+			seamless>
+				<a href="http://phftapes.bandcamp.com/album/limit-breaks">limit breaks by Pirates of the High Frequencies</a>
+			</iframe>
+		)
+	}
+
+	renderAllBlogposts () {
 		return (
 			<Provider store={store}>
-				<BlogpostContainer />
+				<BlogpostContainer count="all"/>
+			</Provider>
+			)
+	}
+
+	renderSomeBlogposts () {
+		return (
+			<Provider store={store}>
+				<BlogpostContainer count="02"/>
 			</Provider>
 			)
 	}
@@ -61,7 +107,7 @@ class App1 extends React.Component {
 	renderReleases () {
 		return (
 			<Provider store={store}>
-				<ReleaseContainer />
+				<ReleaseContainer page={this.state.release} setRelease={this.setRelease.bind(this)}/>
 			</Provider>
 			)
 	}
@@ -69,26 +115,10 @@ class App1 extends React.Component {
 	renderMain () {
 		return (
 			<div>
-				<nav className="navbar navbar-default navbar-fixed-top">
-					<div className="container fluid">
-						<div style={styles.left} className="col-md-4">
-							<h3 style={styles.left}>link1</h3>
-							<h3 style={styles.left}>link2</h3>
-							<div className="clearfix"></div>
-						</div>
-						<div style={styles.center} className="col-md-4">
-							<h1 className="text-center">FA</h1>
-						</div>
-						<div style={styles.right} className="col-md-4">
-							<h3 style={styles.right}>link3</h3>
-							<h3 style={styles.right}>link4</h3>
-							<div className="clearfix"></div>
-						</div>
-					</div>
-				</nav>
-				{this.renderBlogposts()}
-				{this.renderReleases()}
 				{this.renderSoundcloud()}
+				{this.renderBandcamp()}
+				<br />
+				{this.renderSomeBlogposts()}
 			</div>
 			)
 	}
@@ -96,7 +126,26 @@ class App1 extends React.Component {
 	render () {
 		return (
 			<div>
-				{this.renderMain()}
+				<nav className="navbar navbar-default navbar-fixed-top">
+					<div className="container fluid">
+						<div style={styles.left} className="col-md-4">
+							<h5 style={styles.left}>link1</h5>
+							<h5 style={styles.left}>link2</h5>
+						</div>
+						<div style={styles.center} className="col-md-4">
+							<h1 className="text-center">FA</h1>
+						</div>
+						<div style={styles.right} className="col-md-4">
+							<h5 style={styles.right} onClick={() => this.setMain()}>Home</h5>
+							<h5 style={styles.right} onClick={() => this.setBlog()}>Blog</h5>
+							<h5 style={styles.right} onClick={() => {this.setReleases(), this.setReleaseMain()}}>Releases</h5>
+						</div>
+					</div>
+				</nav>
+				<a id="releaseAnchor"></a>
+				{this.state.page === "main" ? this.renderMain() : null}
+				{this.state.page === "blog" ? this.renderAllBlogposts() : null}
+				{this.state.page === "releases" ? this.renderReleases() : null}
 			</div>
 			)
 	}

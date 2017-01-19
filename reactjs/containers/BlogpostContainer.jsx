@@ -36,7 +36,7 @@ export default class BlogpostContainer extends React.Component {
       <div>
         <div className="row">
           {blogpost.content !== undefined &&
-          <BlogpostContent content={blogpost.content} />
+          <BlogpostContent content={blogpost.content} count={this.props.count}/>
           }
         </div>
       </div>

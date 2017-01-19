@@ -7,6 +7,9 @@
 **/__pycache__
 **/migrations
 *.pyc
+*.png
+*.jpg
+*.jpeg
 fausseteamour/db.sqlite3
 fausseteamour/manage.py
 pip-selfcheck.json
