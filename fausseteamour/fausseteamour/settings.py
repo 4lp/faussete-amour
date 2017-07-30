@@ -38,6 +38,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -52,9 +53,12 @@ INSTALLED_APPS = [
     'webpack_loader',
     'blogpost',
     'release',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -141,6 +145,6 @@ STATICFILES_DIRS = [
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'bundles/local/',  # end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, '..\webpack-stats-local.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack-stats-local.json'),
     }
 }

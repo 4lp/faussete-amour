@@ -7,6 +7,7 @@ class ReleaseSerializer(serializers.Serializer):
     image = serializers.SerializerMethodField() 
     bc_code = serializers.CharField(max_length=1000)
     optional_content = serializers.CharField()
+    optional_html = serializers.CharField()
 
     def get_image(self, instance):
         # returning image url if there is an image else blank string

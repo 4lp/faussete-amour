@@ -7,6 +7,7 @@ class Release(models.Model):
     image = models.ImageField(upload_to='release/') 
     bc_code = models.CharField(max_length=1000)
     optional_content = models.TextField(blank=True)
+    optional_html = models.TextField(blank=True)
 
     def __str__(self):
         return self.name

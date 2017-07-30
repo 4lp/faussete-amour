@@ -1,3 +1,33 @@
 body { 
 	padding-top: 110px; 
+	background-image: url('../images/FA_warp_grad_wallpaper.png');
+	background-size: cover;
+	color: #EA4185;
+}
+
+.navbar-default {
+	background-color: black;
+	border: none;
+}
+
+iframe {
+	border-width: 2px;
+	border-color: #EA4185;
+	border-style: groove;
+	padding: 10px 10px 10px 10px;
+	/*margin: 10px 10px 10px 10px;*/
+}
+
+.blogpost {
+	background: black;
+	border-width: 2px;
+	border-color: #EA4185;
+	border-style: groove;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+}
+
+img.center {
+	display: block;
+	margin: 0 auto;
 }

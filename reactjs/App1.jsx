@@ -23,13 +23,26 @@ const styles = {
 	left: {
 		textAlign: "left",
 		width: "33%",
+		maxHeight: "inherit",
+		maxWidth: "inherit"
+
 	},
 	center: {
 		width: "33%",
+		maxHeight: "inherit",
+		maxWidth: "inherit"
+
 	},
 	right: {
 		textAlign: "right",
 		width: "33%",
+		maxHeight: "inherit",
+		maxWidth: "inherit"
+
+	},
+	height: {
+		maxHeight: "inherit",
+		maxWidth: "inherit"
 	}
 }
 
@@ -80,7 +93,7 @@ class App1 extends React.Component {
 	renderBandcamp () {
 		return (
 			<iframe 
-			style={{border: "0", width: "50%", height: "500px",}} 
+			style={{width: "50%", height: "500px",}} 
 			src="https://bandcamp.com/EmbeddedPlayer/album=497716961/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" 
 			seamless>
 				<a href="http://phftapes.bandcamp.com/album/limit-breaks">limit breaks by Pirates of the High Frequencies</a>
@@ -126,14 +139,14 @@ class App1 extends React.Component {
 	render () {
 		return (
 			<div>
-				<nav className="navbar navbar-default navbar-fixed-top">
-					<div className="container fluid">
+				<nav className="navbar navbar-default navbar-fixed-top" style={{maxHeight: "100px"}}>
+					<div className="container fluid" style={styles.height}>
 						<div style={styles.left} className="col-md-4">
 							<h5 style={styles.left}>link1</h5>
 							<h5 style={styles.left}>link2</h5>
 						</div>
 						<div style={styles.center} className="col-md-4">
-							<h1 className="text-center">FA</h1>
+							<img src="../static/images/FA2.png" style={styles.height}/>
 						</div>
 						<div style={styles.right} className="col-md-4">
 							<h5 style={styles.right} onClick={() => this.setMain()}>Home</h5>
@@ -146,6 +159,7 @@ class App1 extends React.Component {
 				{this.state.page === "main" ? this.renderMain() : null}
 				{this.state.page === "blog" ? this.renderAllBlogposts() : null}
 				{this.state.page === "releases" ? this.renderReleases() : null}
+				<div><img src="../static/images/spin_cube.gif" className="center"/></div>
 			</div>
 			)
 	}

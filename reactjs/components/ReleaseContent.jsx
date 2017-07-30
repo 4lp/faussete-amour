@@ -7,6 +7,7 @@ export default class ReleaseContent extends React.Component {
         this.state = {
           selectedRelease: "none",
           optionalContent: "",
+	  optionalHTML: "",
         }
     }
 
@@ -18,9 +19,13 @@ export default class ReleaseContent extends React.Component {
     this.setState({ optionalContent: content })
   }
 
+  setOptionalHTML (content) {
+    this.setState({ optionalHTML: content })
+  }
+
   renderSelectedRelease () {
     return (
-      <ReleasePage selectedRelease = {this.state.selectedRelease} optionalContent = {this.state.optionalContent} />
+      <ReleasePage selectedRelease = {this.state.selectedRelease} optionalContent = {this.state.optionalContent} optionalHTML = {this.state.optionalHTML} />
     )
   }
 
@@ -31,7 +36,7 @@ export default class ReleaseContent extends React.Component {
     content.forEach((item, index) => {
       let node = (
         <div className="col-sm-4 text-center" >
-          <img src={item.image} onClick={() => {this.props.setRelease(), this.setSelectedRelease(item.name), this.setOptionalContent(item.optional_content)}}/>
+          <img src={item.image} onClick={() => {this.props.setRelease(), this.setSelectedRelease(item.name), this.setOptionalContent(item.optional_content), this.setOptionalHTML(item.optional_html)}}/>
           <p>{item.name}</p>
         </div>
       )

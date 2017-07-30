@@ -14,10 +14,10 @@ export default class BlogpostContent extends React.Component {
     content.forEach((item, index) => {
       if (i < count) {
         let node = (
-          <div>
-          {item.name}
-          {item.date}
-          {item.content}
+          <div className="blogpost">
+          <h3>{item.name}</h3>
+          <p><em>{item.date}</em></p>
+          <p>{item.content}</p>
           </div>
         )
         contentNodes.push(node)
