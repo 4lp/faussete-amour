@@ -1,1 +1,1 @@
-Django/React website for [Faussete Amour](https://soundcloud.com/faussete-amour)
+Django/React website for [Henologist](https://soundcloud.com/henologist)
