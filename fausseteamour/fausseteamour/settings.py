@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'blogpost',
     'release',
     'corsheaders',
+    'social_icons',
 ]
 
 MIDDLEWARE = [

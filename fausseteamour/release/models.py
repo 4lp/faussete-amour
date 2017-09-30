@@ -4,7 +4,7 @@ class Release(models.Model):
     name = models.CharField(max_length=1000)
     date = models.DateTimeField()
     album_info = models.TextField()
-    image = models.ImageField(upload_to='release/') 
+    image = models.CharField(max_length=1000) 
     bc_code = models.CharField(max_length=1000)
     optional_content = models.TextField(blank=True)
     optional_html = models.TextField(blank=True)

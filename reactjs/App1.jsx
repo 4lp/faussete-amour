@@ -22,20 +22,17 @@ let store = finalCreateStore(reducer)
 const styles = {
 	left: {
 		textAlign: "left",
-		width: "33%",
 		maxHeight: "inherit",
 		maxWidth: "inherit"
 
 	},
 	center: {
-		width: "33%",
 		maxHeight: "inherit",
 		maxWidth: "inherit"
 
 	},
 	right: {
 		textAlign: "right",
-		width: "33%",
 		maxHeight: "inherit",
 		maxWidth: "inherit"
 
@@ -75,13 +72,13 @@ class App1 extends React.Component {
   		this.setState({ release: "" })
   	}
 
-	renderSoundcloud () {
+	renderSoundcloud (width) {
 		let source = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/130545701&amp;" +
 			"auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;" +
 			"show_reposts=false&amp;visual=true"
 		return (
 			<iframe 
-			width="50%" 
+			width={width} 
 			height="500" 
 			scrolling="no" 
 			frameBorder="no" 
@@ -102,6 +99,7 @@ class App1 extends React.Component {
 	}
 
 	renderAllBlogposts () {
+		document.body.classList.remove('releases');
 		return (
 			<Provider store={store}>
 				<BlogpostContainer count="all"/>
@@ -118,22 +116,34 @@ class App1 extends React.Component {
 	}
 
 	renderReleases () {
+		document.body.classList.add('releases');
 		return (
 			<Provider store={store}>
-				<ReleaseContainer page={this.state.release} setRelease={this.setRelease.bind(this)}/>
+				<ReleaseContainer page={this.state.release} setRelease={this.setRelease.bind(this)} setReleaseMain={this.setReleaseMain.bind(this)}/>
 			</Provider>
 			)
 	}
 
 	renderMain () {
-		return (
-			<div>
-				{this.renderSoundcloud()}
-				{this.renderBandcamp()}
-				<br />
-				{this.renderSomeBlogposts()}
-			</div>
-			)
+		document.body.classList.remove('releases');
+		if (1){
+			return (
+				<div>
+					{this.renderSoundcloud("100%")}
+					<br />
+					{this.renderSomeBlogposts()}
+				</div>
+				)
+		} else {
+			return (
+					<div>
+						{this.renderSoundcloud("50%")}
+						{this.renderBandcamp()}
+						<br />
+						{this.renderSomeBlogposts()}
+					</div>
+					)
+		}
 	}
 	
 	render () {
@@ -159,7 +169,7 @@ class App1 extends React.Component {
 				{this.state.page === "main" ? this.renderMain() : null}
 				{this.state.page === "blog" ? this.renderAllBlogposts() : null}
 				{this.state.page === "releases" ? this.renderReleases() : null}
-				<div><img src="../static/images/spin_cube.gif" className="center"/></div>
+				<div><img src="../static/images/spin_cube.gif" className="center footer-image"/></div>
 			</div>
 			)
 	}

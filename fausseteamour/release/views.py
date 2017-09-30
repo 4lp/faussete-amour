@@ -7,6 +7,6 @@ class ReleaseViewSet(viewsets.ModelViewSet):
     serializer_class = ReleaseSerializer
 
 
-    def getBlogpost(self, request):
-        blogpost = self.get_object()
-        return blogpost
+    def getRelease(self, request):
+        release = self.get_object()
+        return release

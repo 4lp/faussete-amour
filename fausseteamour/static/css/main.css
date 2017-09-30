@@ -5,9 +5,15 @@ body {
 	color: #EA4185;
 }
 
+body.releases {
+	background-image: url('../images/witness_grad_resize.png');
+	background-size: cover;
+}
+
 .navbar-default {
 	background-color: black;
 	border: none;
+	text-align: center;
 }
 
 iframe {
@@ -15,7 +21,16 @@ iframe {
 	border-color: #EA4185;
 	border-style: groove;
 	padding: 10px 10px 10px 10px;
+	box-shadow: 10px 10px 0px black;	
 	/*margin: 10px 10px 10px 10px;*/
+}
+
+iframe.releases {
+	border-width: 2px;
+	border-color: #EA4185;
+	border-style: groove;
+	padding: 0 0 0 0;
+	box-shadow: 0 0 0 0;
 }
 
 .blogpost {
@@ -24,10 +39,25 @@ iframe {
 	border-color: #EA4185;
 	border-style: groove;
 	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
+	margin: 20px 0px 10px 0px;
+	box-shadow: 10px 10px 0px black;	
+}
+
+hr {
+	border-color: #EA4185;
 }
 
 img.center {
 	display: block;
 	margin: 0 auto;
+}
+
+img.footer-image {
+	height: 10%;
+	width: 10%;
+}
+
+.release_image {
+	max-height: 200px;
+	max-width: 200px;
 }

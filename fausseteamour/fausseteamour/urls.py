@@ -19,10 +19,12 @@ from django.views import generic
 from rest_framework import routers
 from blogpost import views as blogpostViews
 from release import views as releaseViews
+from social_icons import views as socialIconsViews
 
 router = routers.DefaultRouter()
 router.register(r'blogpost', blogpostViews.BlogpostViewSet)
 router.register(r'release', releaseViews.ReleaseViewSet)
+router.register(r'social_icon', socialIconsViews.SocialIconsViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
