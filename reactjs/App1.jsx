@@ -11,6 +11,7 @@ import thunk from "redux-thunk"
 import * as reducers from "./reducers"
 import BlogpostContainer from "./containers/BlogpostContainer"
 import ReleaseContainer from "./containers/ReleaseContainer"
+import SocialIconContainer from "./containers/SocialIconContainer"
 
 let finalCreateStore = compose(
   applyMiddleware(thunk),
@@ -124,6 +125,14 @@ class App1 extends React.Component {
 			)
 	}
 
+	renderSocialIcons () {
+		return (
+			<Provider store={store}>
+				<SocialIconContainer />	
+			</Provider>
+		)
+	}
+
 	renderMain () {
 		document.body.classList.remove('releases');
 		if (1){
@@ -170,6 +179,7 @@ class App1 extends React.Component {
 				{this.state.page === "blog" ? this.renderAllBlogposts() : null}
 				{this.state.page === "releases" ? this.renderReleases() : null}
 				<div><img src="../static/images/spin_cube.gif" className="center footer-image"/></div>
+				{this.renderSocialIcons()}
 			</div>
 			)
 	}
